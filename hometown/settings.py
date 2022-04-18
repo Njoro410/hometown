@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'hood.apps.HoodConfig',
     'material',
     'rest_framework',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +80,10 @@ WSGI_APPLICATION = 'hometown.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'hometown',
+        'USER':'brian',
+        'PASSWORD':'12345'
     }
 }
 
