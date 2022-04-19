@@ -1,7 +1,9 @@
+from dataclasses import field
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-
+from django.forms import ModelForm
+from .models import Profile,Neighbourhood
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -19,3 +21,21 @@ class UserRegistrationForm(UserCreationForm):
             'username': None,
             'email': None,
         }
+        
+class UserProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ('user','location')
+        fields = '__all__'
+        
+class UpdateNeighbourhoodForm(ModelForm):
+    
+    class Meta:
+        model = Neighbourhood
+        fields = ['address',]
+        
+class ProfileUpdateForm(ModelForm):
+    
+    class Meta:
+        model = Profile
+        fields = ['bio','profile_pic']
