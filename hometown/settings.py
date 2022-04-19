@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -84,12 +88,22 @@ AUTHENTICATION_BACKENDS = (
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'hometown',
+#         'USER':'brian',
+#         'PASSWORD':'12345'
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hometown',
-        'USER':'brian',
-        'PASSWORD':'12345'
+        'NAME':'dfa15lq2ie8b4',
+        'USER':'gyylbwddoobvrf',
+        'PASSWORD':'fef7f02f5f6cfef451f1756144d76a20077a991fa4fe5ab12947f9d78b56534e',
+        'HOST':'ec2-54-160-109-68.compute-1.amazonaws.com',
+        'PORT':'5432',
     }
 }
 
@@ -133,7 +147,7 @@ STATIC_URL = 'static/'
 #MEDIA FILES
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
