@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'brian.lyonne@gmail.com'
+EMAIL_HOST_PASSWORD = 'Njoroge1.'
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,7 +78,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hometown.wsgi.application'
 
-
+AUTHENTICATION_BACKENDS = (
+    ('django.contrib.auth.backends.ModelBackend'),
+)
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -124,7 +130,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#MEDIA FILES
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'home'
