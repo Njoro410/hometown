@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+      
+            <div id="map" style='width: 100%; height: 150px;'></div>
+      
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s3">
+            <div class="row" style="margin-left:5px">
+                <ul class="collection">
+                    <p style="text-align: center;">Utilities</p>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle green">business</i>
+                        <span class="title">Businesses</span>
+                        <a href="{% url 'business' locid  %}" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">local_car_wash</i>
+                        <span class="title">Police</span>
+                        <a href="{% url 'police' locid  %}" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle green">local_hospital</i>
+                        <span class="title">Hospitals</span>
+                        <a href="{% url 'hospital' locid  %}" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle red">school</i>
+                        <span class="title">Schools</span>
+                        <a href="#!" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                    </li>
+                </ul>
+                <div class="card ">
+                    <div class="card-header">
+                        <img src="{{weather.current.condition.icon}}" style="float: right;"  alt="">
+                    </div>
+                    <div class="card-content white-text">
+                        <span class="card-title">Weather</span>
+                        <p>Temperature:&nbsp;<span class="weather">{{weather.current.temp_c}}&deg;C</span></p>
+                        <hr>
+                        <p>State:&nbsp;<span class="weather">{{weather.current.condition.text}}</span></p>
+                        <hr>
+                        <p>Humidity:&nbsp;<span class="weather">{{weather.current.humidity}}</span></p>
+                        <hr>
+                        <p>Wind Speed:&nbsp;<span class="weather">{{weather.current.wind_kph}}kph</span></p>
+                        <hr>
+                        <p>Feels like:&nbsp;<span class="weather">{{weather.current.feelslike_c}}&deg;C</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col s6">
+            <div class="row" style="margin-left:2.5px">
+                <div class="card ">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{location}}</span>
+                        <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                </div>
+                <hr>
+                <p style="text-align: center;">Top Post</p>
+                <hr>
+                {% for post in posts %}
+                <div class="card ">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{post.title}}</span>
+                        <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+                {% empty %}
+                <p>no posts</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col s3">
+            <ul class="collapsible">
+                <p style="text-align: center;">Alerts & Notices</p>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">more_vert</i>Wedding</div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">more_vert</i>Voter Registration</div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">more_vert</i>Annual Party</div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, {});
+    });
+</script>
+
+<style>
+    .card,
+    .collection,
+    .collapsible {
+        background: rgba(38, 1, 1, 0.22);
+        border-radius: 5px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(3.4px);
+        -webkit-backdrop-filter: blur(3.4px);
+        border: 1px solid rgba(38, 1, 1, 0.08);
+    }
+    .weather {
+        color:black;
+        font-size: 20px;
+    }
+</style>
+{% endblock %}
