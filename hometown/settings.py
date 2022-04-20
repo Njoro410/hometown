@@ -19,7 +19,12 @@ import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+#cloudinary config
+cloudinary.config( 
+  cloud_name = "dn6zkeb6i", 
+  api_key = "824151859578476", 
+  api_secret = "I8NNshAJn-Ge5wFoAyTzemF3nW4" 
+)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
